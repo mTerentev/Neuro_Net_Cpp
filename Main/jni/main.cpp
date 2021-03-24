@@ -2,9 +2,10 @@
 #include <math.h>
 #include <cstdlib>
 #include <vector>
+#include <ctime>
 
-#include <matrix.h>
-#include <net.h>
+#include "matrix.h"
+#include "net.h"
 
 int main()
 {
@@ -24,4 +25,6 @@ int main()
 		    std::cout<<c[0]<<"\n";
 		}
 	}
+	int a;
+	std::cin>>a;
 }
