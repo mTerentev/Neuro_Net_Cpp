@@ -3,28 +3,21 @@
 #include <cstdlib>
 #include <vector>
 #include <ctime>
+#include <algorithm>
 
 #include "matrix.h"
 #include "net.h"
+#include "environment.h"
 
 int main()
 {
 	srand(time(0));
 	Net net = Net(2,1,2,5);
-	net.print(0);
-	std::vector<float> b;
-	std::vector<float> c;
-	for(int t1=0;t1<30;t1++){
-		b.clear();
-	    b.push_back(float(rand())/float(RAND_MAX));
-	    b.push_back(float(rand())/float(RAND_MAX));
-		std::cout<<b[0]<<" "<<b[1]<<std::endl;
-	    for(int t2=0;t2<30;t2++){
-		    c=net.forward(b);
-		    net.backward(0.3-c[0],10/(t2+1));
-		    std::cout<<c[0]<<"\n";
-		}
-	}
+	Environment env = Environment(20,20,2);
+	net.print(1);
+	env.print(net);
+	env.teach(net,10);
+	
 	int a;
 	std::cin>>a;
 	//flag

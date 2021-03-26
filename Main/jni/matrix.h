@@ -26,7 +26,7 @@ class Matrix{
 		void rand_gen(){
 			for(int i=0;i<rows;i++){
 				for(int j=0;j<columns;j++){
-					a[i][j]=float(rand())/float(RAND_MAX);
+					a[i][j]=pow(-1,rand()%2)*float(rand())/float(RAND_MAX);
 					//a[i][j]=12*i+j;
 				}
 			}
