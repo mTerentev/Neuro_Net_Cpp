@@ -21,4 +21,5 @@ int main()
 	
 	int a;
 	std::cin>>a;
+        //flag
 }
