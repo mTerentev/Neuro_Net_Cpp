@@ -29,14 +29,16 @@ class Environment{
 		for(int i=0;i<y;i++){
 			for(int j=0;j<x;j++){
 				int c=contains(dots,j,i);
-				if(c)std::cout<<c;
+				if(c)std::cout<<c<<" ";
 				else{
 					std::vector<float> inp;
-					inp.push_back(j/x);
-					inp.push_back(i/y);
-					float t=n.forward(inp)[0];
-					if(t<0.5)std::cout<<"- ";
-					else std::cout<<"+ ";
+					inp.push_back(float(j)/float(x));
+					inp.push_back(float(i)/float(y));
+					float t=n.forward(inp)[1];
+					if(t<0.25)std::cout<<". ";
+					else if(t<0.5 && t>=0.25)std::cout<<"- ";
+					else if(t<0.75 && t>=0.5)std::cout<<"+ ";
+					else std::cout<<"× ";
 				}
 			}
 			std::cout<<std::endl;
@@ -44,18 +46,18 @@ class Environment{
 		std::cout<<std::endl<<std::endl;
 	}
 	void teach(Net n,float h){
-		for(int i=0;i<20;i++){
+		for(int i=0;i<50;i++){
 			float err=0;
 			for(int j=0;j<dots.size();j++){
 				std::vector<float> inp;
-				inp.push_back(dots[j][0]/x);
-				inp.push_back(dots[j][1]/y);
-				float res=n.forward(inp)[0];
-				err+=pow((res-dots[j][2]+1),2);
+				inp.push_back(float(dots[j][0])/float(x));
+				inp.push_back(float(dots[j][1])/float(y));
+				float res=n.forward(inp)[1];
+				err=dots[j][2]-1-res;
+				n.backward(err,h);
+				//n.print(1);
 			}
-			err/=dots.size();
-			std::cout<<err<<std::endl;
-			n.backward(err,h);
+			h/=1.1;
 			print(n);
 		}
 	}

@@ -4,10 +4,10 @@ class Net{
 		std::vector<std::vector<float> > signals;
 		std::vector<std::vector<float> > errors;
 		float func(float x){
-			return 1/(1+exp(-x));
+			return 1.0/(1.0+exp(-x));
 		}
 		float dfunc(float x){
-			return x*(1-x);
+			return x*(1.0-x);
 		}
 		void forward_err(float h){
 			for(int i=1;i<net.size();i++){
@@ -19,7 +19,7 @@ class Net{
 			}
 		}
 	public:
-	    Matrix weights=Matrix(20,20);
+	    Matrix weights=Matrix(50,50);
 		Net(int a, int b, int c, int d){
 			int k=0;
 			std::vector<int> temp;
@@ -72,6 +72,7 @@ class Net{
 					}
 					signals[i][j]=func(s);
 				}
+				signals[i][0]=1;
 			}
 			for(int i=0; i<net[net.size()-1].size();i++){
 				result.push_back(signals[net.size()-1][i]);
