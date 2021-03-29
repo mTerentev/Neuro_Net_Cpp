@@ -19,7 +19,7 @@ class Net{
 			}
 		}
 	public:
-	    Matrix weights=Matrix(50,50);
+	    Matrix weights=Matrix(100,100);
 		Net(int a, int b, int c, int d){
 			int k=0;
 			std::vector<int> temp;

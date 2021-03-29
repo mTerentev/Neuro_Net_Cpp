@@ -12,11 +12,11 @@
 int main()
 {
 	srand(time(0));
-	Net net = Net(2,2,2,4);
+	Net net = Net(2,2,1,50);
 	Environment env = Environment(20,20,3);
 	net.print(1);
 	env.print(net);
-	env.teach(net,30);
+	env.teach(net,10);
 	//env.print(net);
 	
 	int a;

@@ -38,7 +38,7 @@ class Environment{
 					if(t<0.25)std::cout<<". ";
 					else if(t<0.5 && t>=0.25)std::cout<<"- ";
 					else if(t<0.75 && t>=0.5)std::cout<<"+ ";
-					else std::cout<<"× ";
+					else std::cout<<"# ";
 				}
 			}
 			std::cout<<std::endl;
