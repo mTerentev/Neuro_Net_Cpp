@@ -35,8 +35,8 @@ class Environment{
 					inp.push_back(float(j)/float(x));
 					inp.push_back(float(i)/float(y));
 					float t=n.forward(inp)[1];
-					if(t<0.25)std::cout<<". ";
-					else if(t<0.5 && t>=0.25)std::cout<<"- ";
+					if(t<0.25)std::cout<<".  ";
+					else if(t<0.5 && t>=0.25)std::cout<<"-  ";
 					else if(t<0.75 && t>=0.5)std::cout<<"+ ";
 					else std::cout<<"# ";
 				}
@@ -50,12 +50,13 @@ class Environment{
 			float err=0;
 			for(int j=0;j<dots.size();j++){
 				std::vector<float> inp;
+				inp.push_back(1);
 				inp.push_back(float(dots[j][0])/float(x));
 				inp.push_back(float(dots[j][1])/float(y));
 				float res=n.forward(inp)[1];
 				err=dots[j][2]-1-res;
 				n.backward(err,h);
-				//n.print(1);
+				n.print(1);
 			}
 			h/=1.1;
 			print(n);
