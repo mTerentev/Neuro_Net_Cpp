@@ -4,7 +4,7 @@ include $(CLEAR_VARS)
 
 LOCAL_CPP_EXTENSION := .cpp .cc
 
-LOCAL_SRC_FILES = main.cpp
+LOCAL_SRC_FILES = main.cpp environment.cpp Net.cpp matrix.cpp
 
 LOCAL_MODULE := main
 
